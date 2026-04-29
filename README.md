@@ -1,64 +1,78 @@
-# Laura Cortés — Portafolio
+# Portafolio · Laura Cortés
 
-Portafolio web personal de **Laura Cortés** · Diseño Gráfico & Arquitectura.
-Sitio estático (HTML, CSS, JS) listo para desplegarse en **GitHub Pages**.
+> Portafolio web personal de **Laura Cortés** — Diseñadora Gráfica y Arquitecta en formación, desde Cali, Colombia.
 
-## Estructura
+🌐 **Sitio en vivo:** https://mayerliarrigui.github.io/proyecto_portafolio_alejandra/
 
-```
-.
-├── index.html          # Single-page con todas las secciones
-├── css/styles.css      # Estilos + animaciones
-├── js/script.js        # Interacciones (scroll, menú, formulario, tilt)
-├── img/                # Recursos visuales
-│   ├── arqui/          # Proyectos de arquitectura
-│   ├── diseño grafico/ # Proyectos de diseño gráfico
-│   └── ...             # Logos, fondos, decoraciones
-└── README.md
-```
+---
 
-## Probar localmente
+## 🎨 Sobre el proyecto
 
-Abre `index.html` directamente en el navegador, o monta un servidor estático:
+Sitio web estático construido con **HTML5**, **CSS3** y **JavaScript vanilla** que recoge los proyectos de Laura en dos disciplinas:
+
+- **Diseño Gráfico** — ilustración, editorial e identidad visual.
+- **Arquitectura** — vivienda, espacio público, maquetas y proyectos académicos.
+
+El sitio incluye un menú lateral animado, un libro interactivo en la sección "Sobre mí" (con páginas que se voltean usando solo CSS) y una galería de proyectos con varios layouts tipo *collage*.
+
+---
+
+## 🗂️ Estructura del sitio
+
+| Página | Archivo | Contenido |
+| --- | --- | --- |
+| Inicio | [`index.html`](index.html) | Hero de bienvenida + libro "Sobre mí" |
+| Diseño Gráfico | [`diseno-grafico.html`](diseno-grafico.html) | Ilustración, libro, café, cocona |
+| Arquitectura | [`arquitectura.html`](arquitectura.html) | Maquetación, Ciénaga Viva, Casa Sol, Refugio La Orilla |
+| Mis Procesos | [`procesos.html`](procesos.html) | Método creativo en 4 pasos |
+| Contacto | [`contacto.html`](contacto.html) | Datos y formulario de contacto |
+
+---
+
+## 🛠️ Tecnologías
+
+- **HTML5** semántico y accesible.
+- **CSS3** moderno: Grid, Flexbox, `clamp()`, variables, `aspect-ratio`, animaciones y `@font-face`.
+- **JavaScript** vanilla para el menú, el año dinámico y las animaciones de aparición al hacer scroll.
+- **Google Fonts**: Oswald, Playfair Display, Poppins, Bowlby One SC, Caveat, Abril Fatface.
+- Tipografías locales personalizadas: **Hatten**, **Amoria**, **Swisse**.
+
+---
+
+## 🚀 Cómo verlo en local
+
+No requiere instalación de dependencias. Basta con abrir el `index.html` en cualquier navegador moderno.
+
+Para tener recarga automática mientras se edita:
 
 ```bash
-# Python 3
-python -m http.server 8080
-# Node
-npx serve .
+npx live-server
 ```
 
-Visita: `http://localhost:8080`
+Eso abrirá el sitio en `http://127.0.0.1:8080` y refrescará la página al guardar cambios.
 
-## Desplegar en GitHub Pages
+---
 
-1. Crea un repositorio nuevo en GitHub (por ejemplo `portafolio` o `<usuario>.github.io`).
-2. Sube todo el contenido de esta carpeta:
-   ```bash
-   git init
-   git add .
-   git commit -m "Portafolio inicial"
-   git branch -M main
-   git remote add origin https://github.com/<usuario>/<repo>.git
-   git push -u origin main
-   ```
-3. En GitHub: **Settings → Pages → Source: `main` / `/ (root)`**.
-4. Tu sitio estará en `https://<usuario>.github.io/<repo>/` (o `https://<usuario>.github.io/` si el repo se llama `<usuario>.github.io`).
+## 📁 Estructura de carpetas
 
-> **Tip:** Para evitar problemas con caracteres especiales en URLs en algunos hostings, considera renombrar la carpeta `diseño grafico` a `diseno-grafico` (y actualizar las rutas en `index.html`). En GitHub Pages funciona, pero la URL queda más limpia.
+```
+proyecto_portafolio_alejandra/
+├── index.html              ← Página de inicio
+├── diseno-grafico.html
+├── arquitectura.html
+├── procesos.html
+├── contacto.html
+├── css/
+│   └── styles.css          ← Estilos globales (con índice y comentarios)
+├── js/
+│   └── script.js           ← Interacciones del sitio
+├── img/                    ← Imágenes y proyectos
+└── fonts/                  ← Tipografías locales
+```
 
-## Personalización rápida
+---
 
-- Colores: variables CSS en `:root` (archivo `css/styles.css`).
-- Tipografía: enlaces a Google Fonts en `<head>` de `index.html`.
-- Textos / proyectos: directamente en `index.html`.
-- Imágenes nuevas: súbelas a `img/` y referencia en el HTML.
+## 👩‍🎨 Autor
 
-## Tecnologías
-
-- HTML5 semántico
-- CSS moderno (Grid, Flex, custom properties, animaciones)
-- JavaScript vanilla (sin dependencias)
-- Google Fonts: *Abril Fatface*, *Playfair Display*, *Caveat*, *Poppins*
-
-— Hecho con cariño para Laura ✦
+**Laura Cortés** — Cali, Colombia
+[Behance](https://www.behance.net/alejap321489c) · [WhatsApp](https://wa.me/573012734251) · lauraalejandracortesortegate@gmail.com
