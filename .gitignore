@@ -17,3 +17,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Asistentes IA / Claude
+.claude/
+CLAUDE.md
+memory/
+
+# Backups locales
+*.original.*

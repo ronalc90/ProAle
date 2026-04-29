@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--
+    ============================================================
+    PÁGINA DE CONTACTO
+    Datos de contacto (email, Behance, WhatsApp) y formulario
+    para que los visitantes envíen mensajes a Laura Cortés
+    ============================================================
+-->
+<html lang="es">
+<head>
+    <!-- Configuración básica de la página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto — Laura Cortés</title>
+    <meta name="description" content="Contacta a Laura Cortés — WhatsApp, email y Behance.">
+    <meta name="theme-color" content="#b878ad">
+    <link rel="icon" href="img/mi-logo.ico.ico" type="image/x-icon">
+
+    <!-- Tipografías de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bowlby+One+SC&family=Caveat:wght@400;700&family=Oswald:wght@400;500;600;700&family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Hoja de estilos del proyecto -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Detalles decorativos: punto que sigue el cursor y barra de progreso de scroll -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+
+    <!-- ENCABEZADO Y BARRA DE NAVEGACIÓN PRINCIPAL -->
+    <header class="header" id="header">
+        <nav class="nav container" aria-label="Navegación principal">
+            <a href="index.html" class="nav__logo" aria-label="Inicio">
+                <img src="img/mi%20logo.png" alt="Logo Laura Cortés" />
+                <span>Laura Cortés</span>
+            </a>
+            <ul class="nav__list" id="nav-menu">
+                <li><a href="index.html" class="nav__link">Sobre mí</a></li>
+                <li><a href="diseno-grafico.html" class="nav__link">Diseño Gráfico</a></li>
+                <li><a href="arquitectura.html" class="nav__link">Arquitectura</a></li>
+                <li><a href="procesos.html" class="nav__link">Mis Procesos</a></li>
+                <li><a href="contacto.html" class="nav__link nav__link--cta active">Contacto</a></li>
+            </ul>
+            <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Botón circular flotante que abre el menú lateral -->
+    <button class="menu-fab" id="menu-fab" type="button" aria-label="Abrir menú" aria-controls="menu-drawer" aria-expanded="false">
+        <img src="img/menu.png" alt="" />
+    </button>
+
+    <!-- MENÚ LATERAL (DRAWER) — se despliega al pulsar el botón circular -->
+    <aside class="menu-drawer" id="menu-drawer" aria-hidden="true">
+        <div class="menu-drawer__backdrop" id="menu-drawer-backdrop"></div>
+        <div class="menu-drawer__panel">
+            <button class="menu-drawer__close" id="menu-drawer-close" type="button" aria-label="Cerrar menú">×</button>
+            <div class="menu-drawer__brand-arc" aria-hidden="true">
+                <svg viewBox="0 0 400 110" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <path id="drawerBrandArc" d="M 20 90 Q 200 0 380 90" />
+                    </defs>
+                    <text>
+                        <textPath href="#drawerBrandArc" startOffset="50%" text-anchor="middle">LAURA CORTES</textPath>
+                    </text>
+                </svg>
+            </div>
+            <div class="menu-drawer__avatar">
+                <img src="img/mi%20logo.png" alt="Avatar Laura Cortés" />
+            </div>
+            <h2 class="menu-drawer__home">HOME</h2>
+            <ul class="menu-drawer__list">
+                <li><a href="index.html"      class="menu-drawer__link">SOBRE MI</a></li>
+                <li><a href="diseno-grafico.html" class="menu-drawer__link">DISEÑO GRÁFICO</a></li>
+                <li><a href="arquitectura.html"  class="menu-drawer__link">ARQUITECTURA</a></li>
+                <li><a href="procesos.html"      class="menu-drawer__link">MIS PROCESOS</a></li>
+                <li><a href="contacto.html"      class="menu-drawer__link">CONTACTO</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL — Pill de título + tarjetas con datos + formulario -->
+    <main class="page-main">
+        <section class="contact-page section" id="contacto">
+            <div class="container contact-page__wrap">
+
+                <!-- Pill morada con el título "CONTACTO" -->
+                <div class="contact-page__title reveal-up">
+                    <span class="contact-page__sparkle" aria-hidden="true">✦</span>
+                    <h2>CONTACTO</h2>
+                    <span class="contact-page__sparkle" aria-hidden="true">✦</span>
+                </div>
+
+                <!-- Contenedor grande morado con la información y el formulario -->
+                <div class="contact-page__body reveal-up">
+
+                    <!-- Tarjetas blancas con los datos de contacto -->
+                    <ul class="contact-page__info">
+                        <li>
+                            <a href="mailto:lauraalejandracortesortegate@gmail.com">LAURAALEJANDRACORTESORTEGATE@GMAIL.COM</a>
+                        </li>
+                        <li>
+                            <a href="https://www.behance.net/alejap321489c" target="_blank" rel="noopener">HTTPS://WWW.BEHANCE.NET/ALEJAP321489C</a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/573012734251" target="_blank" rel="noopener">3012734251</a>
+                        </li>
+                    </ul>
+
+                    <!-- Formulario de mensaje (al enviar abre el cliente de correo) -->
+                    <form class="contact-form" action="mailto:lauraalejandracortesortegate@gmail.com" method="post" enctype="text/plain">
+                        <div class="contact-form__field">
+                            <label for="contact-nombre">NOMBRE :</label>
+                            <input type="text" id="contact-nombre" name="nombre" required />
+                        </div>
+                        <div class="contact-form__field">
+                            <label for="contact-email">CORREO ELECTRONICO :</label>
+                            <input type="email" id="contact-email" name="email" required />
+                        </div>
+                        <div class="contact-form__field">
+                            <label for="contact-mensaje">MENSAJE :</label>
+                            <textarea id="contact-mensaje" name="mensaje" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="contact-form__submit">ENVIAR</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+        <div class="container footer__row">
+            <p>© <span id="year"></span> <strong>Laura Cortés</strong> · Diseño Gráfico & Arquitectura · Cali, Colombia</p>
+            <a href="index.html" class="footer__top">Inicio ↑</a>
+        </div>
+    </footer>
+
+    <!-- Botón flotante de WhatsApp en la esquina inferior -->
+    <a class="wa-fab"
+       href="https://wa.me/573012734251?text=%C2%A1Hola%20Laura!%20Vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto."
+       target="_blank" rel="noopener"
+       aria-label="Escribir por WhatsApp">
+        <span class="wa-fab__pulse" aria-hidden="true"></span>
+        <svg class="wa-fab__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M19.05 4.91A10 10 0 0 0 12 2a10 10 0 0 0-8.5 15.18L2 22l4.93-1.46A10 10 0 0 0 12 22a10 10 0 0 0 7.07-17.09Z"/></svg>
+        <span class="wa-fab__tooltip">Escríbeme por WhatsApp</span>
+    </a>
+
+    <!-- Script con interacciones: menú, año, animaciones de aparición -->
+    <script src="js/script.js"></script>
+</body>
+</html>

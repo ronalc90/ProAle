@@ -130,25 +130,67 @@
         const dots = $$('.about-carousel__dot', aboutCarousel);
         let index = 0;
 
-        const goTo = (i) => {
-            index = Math.max(0, Math.min(slides.length - 1, i));
-            track.style.transform = `translateX(-${index * 100}%)`;
-            dots.forEach((d, di) => d.classList.toggle('is-active', di === index));
-            // Reveal current slide
-            slides[index].classList.add('is-visible');
+        let isAnimating = false;
+        const goTo = (i, direction = 'next') => {
+            if (isAnimating) return;
+            const newIndex = Math.max(0, Math.min(slides.length - 1, i));
+            if (newIndex === index && slides[newIndex].classList.contains('is-visible')) return;
+
+            const currentCard = slides[index];
+            const flipPane = direction === 'prev'
+                ? currentCard.querySelector('.about-card__title-pane')
+                : currentCard.querySelector('.about-card__content-pane');
+            const flipClass = direction === 'prev' ? 'is-flipping-prev' : 'is-flipping-next';
+
+            isAnimating = true;
+            currentCard.classList.add('is-flipping');
+            if (flipPane) flipPane.classList.add(flipClass);
+
+            // A mitad de la animación cambiamos el slide para que la nueva página
+            // aparezca cuando la anterior ya esté volteada al menos 90°
+            setTimeout(() => {
+                index = newIndex;
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach((d, di) => d.classList.toggle('is-active', di === index));
+                slides[index].classList.add('is-visible');
+            }, 420);
+
+            // Limpiar al terminar
+            setTimeout(() => {
+                currentCard.classList.remove('is-flipping');
+                if (flipPane) flipPane.classList.remove(flipClass);
+                isAnimating = false;
+            }, 880);
         };
-        const next = () => goTo((index + 1) % slides.length);
-        const prev = () => goTo((index - 1 + slides.length) % slides.length);
+        const next = () => goTo((index + 1) % slides.length, 'next');
+        const prev = () => goTo((index - 1 + slides.length) % slides.length, 'prev');
 
         prevBtn?.addEventListener('click', prev);
         nextBtn?.addEventListener('click', next);
         dots.forEach((d, di) => d.addEventListener('click', () => goTo(di)));
 
-        // Keyboard support
+        // Keyboard support — global cuando el carrusel está visible
         aboutCarousel.setAttribute('tabindex', '0');
-        aboutCarousel.addEventListener('keydown', (e) => {
+        const isCarouselInView = () => {
+            const r = aboutCarousel.getBoundingClientRect();
+            return r.top < window.innerHeight && r.bottom > 0;
+        };
+        const onKey = (e) => {
+            if (!isCarouselInView()) return;
+            const tag = (e.target?.tagName || '').toLowerCase();
+            if (tag === 'input' || tag === 'textarea' || e.target?.isContentEditable) return;
             if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
             if (e.key === 'ArrowLeft')  { e.preventDefault(); prev(); }
+        };
+        document.addEventListener('keydown', onKey);
+
+        // Click "tipo libro": mitad izquierda retrocede, mitad derecha avanza
+        track.addEventListener('click', (e) => {
+            // ignorar clics en enlaces o elementos interactivos del card
+            if (e.target.closest('a, button, input, textarea, [role="button"]')) return;
+            const rect = track.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            if (x < rect.width / 2) prev(); else next();
         });
 
         // Swipe support
@@ -180,7 +222,7 @@
             });
         };
         document.addEventListener('mousemove', move);
-        $$('a, button, .thumb, .arch-card, .discipline').forEach(el => {
+        $$('a, button, .thumb, .arch-card, .discipline, .discipline-card, .project-card').forEach(el => {
             el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
             el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
         });
@@ -348,7 +390,7 @@
     }
 
     /* ---------- LIGHTBOX (fullscreen image viewer) ---------- */
-    const lightboxImages = $$('.project__media img, .arch-card__media img, .thumb img');
+    const lightboxImages = $$('.project__media img, .arch-card__media img, .thumb img, .project-card__media img');
 
     if (lightboxImages.length) {
         const lightbox = document.createElement('div');

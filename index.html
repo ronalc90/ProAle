@@ -1,39 +1,48 @@
 <!DOCTYPE html>
+<!--
+    ============================================================
+    PÁGINA DE INICIO (HOME)
+    Portafolio de Laura Cortés · Diseño Gráfico & Arquitectura
+    Contenido: Hero de bienvenida + sección "Sobre mí" (libro)
+    ============================================================
+-->
 <html lang="es">
 <head>
+    <!-- Configuración básica de la página -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laura Cortés — Portafolio · Diseño Gráfico & Arquitectura</title>
     <meta name="description" content="Portafolio de Laura Cortés — Diseñadora Gráfica y Arquitecta en formación. Branding, ilustración, editorial, vivienda y espacio público desde Cali, Colombia.">
     <meta name="theme-color" content="#b878ad">
     <link rel="icon" href="img/mi-logo.ico.ico" type="image/x-icon">
+
+    <!-- Tipografías de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Caveat:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bowlby+One+SC&family=Caveat:wght@400;700&family=Oswald:wght@400;500;600;700&family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Hoja de estilos del proyecto -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- Cursor follow -->
+    <!-- Detalles decorativos: punto que sigue el cursor y barra de progreso de scroll -->
     <div class="cursor-dot" aria-hidden="true"></div>
-
-    <!-- Page progress bar -->
     <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
 
-    <!-- NAVIGATION -->
+    <!-- ENCABEZADO Y BARRA DE NAVEGACIÓN PRINCIPAL -->
     <header class="header" id="header">
         <nav class="nav container" aria-label="Navegación principal">
-            <a href="#home" class="nav__logo" aria-label="Inicio">
+            <a href="index.html" class="nav__logo" aria-label="Inicio">
                 <img src="img/mi%20logo.png" alt="Logo Laura Cortés" />
                 <span>Laura Cortés</span>
             </a>
             <ul class="nav__list" id="nav-menu">
-                <li><a href="#home" class="nav__link active">Sobre mí</a></li>
-                <li><a href="#proyectos" class="nav__link">Proyectos</a></li>
-                <li><a href="#arquitectura" class="nav__link">Arquitectura</a></li>
-                <li><a href="#diseno" class="nav__link">Diseño Gráfico</a></li>
-                <li><a href="#procesos" class="nav__link">Mis Procesos</a></li>
-                <li><a href="#contacto" class="nav__link nav__link--cta">Contacto</a></li>
+                <li><a href="index.html" class="nav__link">Sobre mí</a></li>
+                <li><a href="diseno-grafico.html" class="nav__link">Diseño Gráfico</a></li>
+                <li><a href="arquitectura.html" class="nav__link">Arquitectura</a></li>
+                <li><a href="procesos.html" class="nav__link">Mis Procesos</a></li>
+                <li><a href="contacto.html" class="nav__link nav__link--cta">Contacto</a></li>
             </ul>
             <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
                 <span></span><span></span><span></span>
@@ -41,18 +50,16 @@
         </nav>
     </header>
 
-    <!-- Botón circular MENU (siempre visible) -->
+    <!-- Botón circular flotante que abre el menú lateral -->
     <button class="menu-fab" id="menu-fab" type="button" aria-label="Abrir menú" aria-controls="menu-drawer" aria-expanded="false">
         <img src="img/menu.png" alt="" />
     </button>
 
-    <!-- Drawer lateral del menú -->
+    <!-- MENÚ LATERAL (DRAWER) — se despliega al pulsar el botón circular -->
     <aside class="menu-drawer" id="menu-drawer" aria-hidden="true">
         <div class="menu-drawer__backdrop" id="menu-drawer-backdrop"></div>
         <div class="menu-drawer__panel">
             <button class="menu-drawer__close" id="menu-drawer-close" type="button" aria-label="Cerrar menú">×</button>
-
-            <!-- LAURA CORTES en arco -->
             <div class="menu-drawer__brand-arc" aria-hidden="true">
                 <svg viewBox="0 0 400 110" preserveAspectRatio="xMidYMid meet">
                     <defs>
@@ -65,31 +72,24 @@
                     </text>
                 </svg>
             </div>
-
             <div class="menu-drawer__avatar">
                 <img src="img/mi%20logo.png" alt="Avatar Laura Cortés" />
             </div>
             <h2 class="menu-drawer__home">HOME</h2>
             <ul class="menu-drawer__list">
-                <li><a href="#sobre-mi"   class="menu-drawer__link" data-section="sobre-mi">SOBRE MI</a></li>
-                <li><a href="#proyectos"  class="menu-drawer__link" data-section="proyectos">PROYECTOS</a></li>
-                <li><a href="#arquitectura" class="menu-drawer__link" data-section="arquitectura">ARQUITECTURA</a></li>
-                <li><a href="#diseno"     class="menu-drawer__link" data-section="diseno">DISEÑO GRÁFICO</a></li>
-                <li><a href="#procesos"   class="menu-drawer__link" data-section="procesos">MIS PROCESOS</a></li>
-                <li><a href="#contacto"   class="menu-drawer__link" data-section="contacto">CONTACTO</a></li>
+                <li><a href="index.html"      class="menu-drawer__link">SOBRE MI</a></li>
+                <li><a href="diseno-grafico.html" class="menu-drawer__link">DISEÑO GRÁFICO</a></li>
+                <li><a href="arquitectura.html"  class="menu-drawer__link">ARQUITECTURA</a></li>
+                <li><a href="procesos.html"      class="menu-drawer__link">MIS PROCESOS</a></li>
+                <li><a href="contacto.html"      class="menu-drawer__link">CONTACTO</a></li>
             </ul>
         </div>
     </aside>
 
-    <!-- HERO -->
+    <!-- HERO — sección de bienvenida con foto, título y subtítulo en arco -->
     <section class="hero" id="home">
-        <!-- Capa 1 (40%): degradado-02 (onda gris) -->
         <img class="hero__layer hero__layer--02" src="img/fondo-textura-degradado-02-01.png.jpg" alt="" aria-hidden="true" />
-
-        <!-- Capa 2 (70%): degradado-03 detrás de la foto -->
         <img class="hero__layer hero__layer--03" src="img/fondo-textura-degradado-03-01.png.jpg" alt="" aria-hidden="true" />
-
-        <!-- scattered shapes overlay -->
         <span class="hero__shapes" aria-hidden="true">
             <img src="img/formas1.png.png" alt="" />
         </span>
@@ -101,11 +101,10 @@
                 <img src="img/laura-01.png" alt="Foto de Laura Cortés" class="hero__photo" />
             </div>
 
-            <!-- curved subtitle "DISEÑO GRÁFICO / ARQUITECTURA" -->
             <div class="hero__subtitle-arc reveal" style="--d:.4s" aria-hidden="true">
-                <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid meet">
+                <svg viewBox="0 0 1400 280" preserveAspectRatio="xMidYMid meet">
                     <defs>
-                        <path id="subtitleArc" d="M 30 40 Q 600 220 1170 40" />
+                        <path id="subtitleArc" d="M 20 40 Q 700 340 1380 40" />
                     </defs>
                     <text>
                         <textPath href="#subtitleArc" startOffset="50%" text-anchor="middle">
@@ -115,542 +114,104 @@
                 </svg>
             </div>
             <p class="visually-hidden">Diseño gráfico / Arquitectura</p>
-
-            <div class="hero__cta reveal" style="--d:.55s">
-                <a href="#proyectos" class="btn btn--primary">Ver proyectos →</a>
-                <a href="#contacto" class="btn btn--ghost">Contáctame</a>
-            </div>
         </div>
-
-        <a href="#sobre-mi" class="hero__scroll" aria-label="Bajar">
-            <span class="hero__scroll-text">Scroll</span>
-            <span class="hero__scroll-line"></span>
-        </a>
     </section>
 
-    <!-- SOBRE MI — carrusel tipo cuaderno espiral -->
+    <!--
+        SOBRE MÍ — Libro interactivo con páginas que se voltean
+        Implementación 100% CSS usando radios ocultos (sin JavaScript)
+    -->
     <section class="about section" id="sobre-mi">
         <div class="container">
-            <header class="section__header section__header--center">
-                <span class="section__kicker">¡Hola!</span>
-            </header>
+            <div class="book" id="about-book">
+                <input type="radio" id="book-spread-1" name="book-spread" checked>
+                <input type="radio" id="book-spread-2" name="book-spread">
+                <input type="radio" id="book-spread-3" name="book-spread">
 
-            <div class="about-carousel" id="about-carousel" aria-roledescription="carousel">
-                <button class="about-carousel__nav about-carousel__nav--prev" type="button" aria-label="Página anterior">
-                    <img src="img/boton%20izquierdo.png" alt="" />
-                </button>
-                <button class="about-carousel__nav about-carousel__nav--next" type="button" aria-label="Página siguiente">
-                    <img src="img/boton%20derecho.png" alt="" />
-                </button>
-
-                <div class="about-carousel__viewport">
-                    <div class="about-carousel__track" id="about-track">
-
-                <article class="about-card about-card--bio reveal-up">
-                    <div class="about-card__title-pane">
-                        <h3>ME GUSTARÍA CONTARTE<br>UN POCO SOBRE MÍ</h3>
-                    </div>
-                    <div class="about-card__spiral" aria-hidden="true">
-                        <span></span><span></span><span></span><span></span><span></span><span></span>
-                    </div>
-                    <div class="about-card__content-pane">
-                        <p>Mi nombre es <strong>Laura Cortés</strong>, tengo 25 años y vivo en la ciudad de Cali. Soy estudiante de Diseño Gráfico y Arquitectura. Me apasionan el arte y el diseño, pero, sobre todo, disfruto aprender y desafiarme cada día para ser mejor.</p>
-                    </div>
-                </article>
-
-                <article class="about-card about-card--skills reveal-up" style="--d:.1s">
-                    <div class="about-card__title-pane">
-                        <h3>MIS HABILIDADES<br>TÉCNICAS</h3>
-                        <p class="about-card__hint">Las herramientas con las que doy vida a cada idea</p>
-                    </div>
-                    <div class="about-card__spiral" aria-hidden="true">
-                        <span></span><span></span><span></span><span></span><span></span><span></span>
-                    </div>
-                    <div class="about-card__content-pane">
-                    <ul class="skills">
-                        <li class="skill" tabindex="0" role="button" aria-label="Más sobre Illustrator"
-                            data-color="#FF9A00"
-                            data-name="Adobe Illustrator"
-                            data-level="Avanzado"
-                            data-desc="Mi herramienta principal para crear arte vectorial. Aquí nacen los logos, íconos, ilustraciones y sistemas gráficos que escalan a cualquier tamaño sin perder calidad."
-                            data-uses="Logos e identidades de marca|Ilustración vectorial editorial|Iconografía y sistemas|Ilustración para empaque|Patrones y stickers|Trazado de tipografía custom">
-                            <span class="skill__icon">
-                                <img src="img/iconos/illustreitor.png" alt="Illustrator" />
-                            </span>
-                            <span class="skill__name">Illustrator</span>
-                        </li>
-                        <li class="skill" tabindex="0" role="button" aria-label="Más sobre 3ds Max"
-                            data-color="#1A8FE3"
-                            data-name="Autodesk 3ds Max"
-                            data-level="Intermedio"
-                            data-desc="Modelado y renderizado 3D para visualización arquitectónica y producto. Ideal para iluminación realista y render de alta calidad."
-                            data-uses="Modelado arquitectónico 3D|Visualización de interiores|Renders fotorrealistas|Animación de cámaras|Iluminación V-Ray / Corona|Composición de escenas">
-                            <span class="skill__icon">
-                                <img src="img/iconos/3dsmax.png" alt="3ds Max" />
-                            </span>
-                            <span class="skill__name">3ds Max</span>
-                        </li>
-                        <li class="skill" tabindex="0" role="button" aria-label="Más sobre Photoshop"
-                            data-color="#31A8FF"
-                            data-name="Adobe Photoshop"
-                            data-level="Avanzado"
-                            data-desc="Edición, retoque y composición. Lo uso para llevar fotografías y mockups al siguiente nivel y para crear arte digital con textura y atmósfera."
-                            data-uses="Retoque y edición fotográfica|Composiciones y collages|Mockups de empaque y editorial|Piezas para redes sociales|Texturas y matte paintings|Color grading de imagen">
-                            <span class="skill__icon">
-                                <img src="img/iconos/photoshop.png" alt="Photoshop" />
-                            </span>
-                            <span class="skill__name">Photoshop</span>
-                        </li>
-                        <li class="skill" tabindex="0" role="button" aria-label="Más sobre InDesign"
-                            data-color="#F36"
-                            data-name="Adobe InDesign"
-                            data-level="Avanzado"
-                            data-desc="Maquetación profesional para impreso y digital. Aquí construyo libros, revistas y portafolios con tipografía y retícula cuidadas."
-                            data-uses="Diseño editorial (libros y revistas)|Brochures, dossiers y portafolios|Manuales de marca|Catálogos y reportes|Maquetación tipográfica|PDFs interactivos">
-                            <span class="skill__icon">
-                                <img src="img/iconos/indesing.png" alt="InDesign" />
-                            </span>
-                            <span class="skill__name">InDesign</span>
-                        </li>
-                        <li class="skill" tabindex="0" role="button" aria-label="Más sobre Adobe XD"
-                            data-color="#FF61F6"
-                            data-name="Adobe XD"
-                            data-level="Intermedio"
-                            data-desc="Diseño de interfaces y experiencia de usuario. Lo uso para prototipar apps y sitios web antes de pasar a desarrollo."
-                            data-uses="Wireframes y bocetos UX|Prototipado de apps móviles|Diseño UI para web|Flujos de navegación|Componentes y design tokens|Hand-off para desarrollo">
-                            <span class="skill__icon">
-                                <img src="img/iconos/adove xd.png" alt="Adobe XD" />
-                            </span>
-                            <span class="skill__name">Adobe XD</span>
-                        </li>
-                        <li class="skill" tabindex="0" role="button" aria-label="Más sobre Filmora"
-                            data-color="#22B7CB"
-                            data-name="Filmora 14"
-                            data-level="Intermedio"
-                            data-desc="Edición de video para contenido digital. Cortes ágiles, ritmo, color y sonido para que cada pieza cuente una historia."
-                            data-uses="Reels y TikToks de marca|Contenido para redes sociales|Edición de video corporativo|Color grading básico|Sincronización con audio|Subtítulos animados">
-                            <span class="skill__icon">
-                                <img src="img/iconos/filmora14.png" alt="Filmora" />
-                            </span>
-                            <span class="skill__name">Filmora</span>
-                        </li>
-                        <li class="skill" tabindex="0" role="button" aria-label="Más sobre Figma"
-                            data-color="#F24E1E"
-                            data-name="Figma"
-                            data-level="Avanzado"
-                            data-desc="Mi espacio favorito para diseñar interfaces y trabajar en equipo en tiempo real. Sistemas de diseño consistentes y colaboración fluida."
-                            data-uses="Diseño UI/UX colaborativo|Sistemas y design tokens|Prototipos interactivos|Wireframes rápidos|Documentación de marca|Hand-off a desarrollo">
-                            <span class="skill__icon">
-                                <img src="img/iconos/figma%20..png" alt="Figma" />
-                            </span>
-                            <span class="skill__name">Figma</span>
-                        </li>
-                        <li class="skill" tabindex="0" role="button" aria-label="Más sobre Revit"
-                            data-color="#0696D7"
-                            data-name="Autodesk Revit"
-                            data-level="Intermedio"
-                            data-desc="Modelado BIM 3D. Permite mantener el modelo, los planos y la documentación coherentes en tiempo real."
-                            data-uses="Modelado BIM 3D|Documentación arquitectónica|Plantas, cortes y vistas|Detalles automatizados|Renders básicos|Coordinación entre disciplinas">
-                            <span class="skill__icon">
-                                <img src="img/iconos/revit.png" alt="Revit" />
-                            </span>
-                            <span class="skill__name">Revit</span>
-                        </li>
-                        <li class="skill" tabindex="0" role="button" aria-label="Más sobre AutoCAD"
-                            data-color="#E60000"
-                            data-name="AutoCAD"
-                            data-level="Avanzado"
-                            data-desc="Dibujo técnico arquitectónico 2D. Aquí desarrollo planos precisos, planimetrías y detalles constructivos."
-                            data-uses="Plantas arquitectónicas|Cortes y fachadas|Detalles constructivos|Planimetrías urbanas|Dibujo técnico 2D|Documentación CAD para obra">
-                            <span class="skill__icon">
-                                <img src="img/iconos/autocad.png" alt="AutoCAD" />
-                            </span>
-                            <span class="skill__name">AutoCAD</span>
-                        </li>
-                        <li class="skill" tabindex="0" role="button" aria-label="Más sobre Rhino"
-                            data-color="#801010"
-                            data-name="Rhinoceros 3D"
-                            data-level="Intermedio"
-                            data-desc="Modelado 3D NURBS para arquitectura y diseño industrial. Ideal para superficies complejas, exploración volumétrica y proyectos de geometría avanzada."
-                            data-uses="Modelado NURBS|Geometría arquitectónica avanzada|Diseño paramétrico (Grasshopper)|Modelado de mobiliario|Estudios de superficie|Renders con plugins">
-                            <span class="skill__icon">
-                                <img src="img/iconos/rhino.png" alt="Rhino" />
-                            </span>
-                            <span class="skill__name">Rhino</span>
-                        </li>
-                    </ul>
-                    <p class="skills__hint">↗ Haz clic en cualquier herramienta para ver qué puedo hacer con ella</p>
-                    </div>
-                </article>
-
-                <article class="about-card about-card--exp reveal-up" style="--d:.2s">
-                    <div class="about-card__title-pane">
-                        <h3>MI EXPERIENCIA</h3>
-                    </div>
-                    <div class="about-card__spiral" aria-hidden="true">
-                        <span></span><span></span><span></span><span></span><span></span><span></span>
-                    </div>
-                    <div class="about-card__content-pane">
-                        <p>Diseñadora en formación entre el gráfico y la arquitectura, convierto ideas en identidades con propósito. He trabajado como freelancer creando branding para marcas independientes y también he dado vida a mi propio emprendimiento, desarrollando su universo visual y gestionando sus redes. Me interesa explorar la creatividad como herramienta de solución, fortaleciendo mis procesos con formación en gestión del tiempo y pensamiento creativo.</p>
-                    </div>
-                </article>
-
-                    </div><!-- /track -->
-                </div><!-- /viewport -->
-
-                <div class="about-carousel__dots" role="tablist">
-                    <button class="about-carousel__dot is-active" type="button" data-slide="0" aria-label="Ir a la página 1"></button>
-                    <button class="about-carousel__dot" type="button" data-slide="1" aria-label="Ir a la página 2"></button>
-                    <button class="about-carousel__dot" type="button" data-slide="2" aria-label="Ir a la página 3"></button>
+                <div class="book__spiral" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
                 </div>
-            </div><!-- /about-carousel -->
-        </div>
-    </section>
 
-    <!-- PROYECTOS INTRO -->
-    <section class="disciplines section" id="proyectos">
-        <div class="container">
-            <header class="section__header section__header--center">
-                <span class="section__kicker">Mi trabajo</span>
-                <h2 class="section__title section__title--xl">Proyectos</h2>
-                <p class="section__lead">Mi obra se mueve entre dos disciplinas que se complementan: el diseño gráfico y la arquitectura. Cada pieza nace de una idea con propósito.</p>
-            </header>
+                <div class="book__page book__page--1">
+                    <div class="book__face">
+                        <div class="book__content book__content--center">
+                            <h3>ME GUSTARÍA CONTARTE<br>UN POCO SOBRE MÍ</h3>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="disciplines__grid">
-                <a href="#diseno" class="discipline reveal-up">
-                    <div class="discipline__bg discipline__bg--design"></div>
-                    <div class="discipline__inner">
-                        <span class="discipline__num">01</span>
-                        <h3 class="discipline__title">Diseño Gráfico</h3>
-                        <p class="discipline__tags">Ilustración · Editorial · Identidad visual</p>
-                        <span class="discipline__arrow" aria-hidden="true">→</span>
+                <div class="book__page book__page--2">
+                    <div class="book__face book__face--front">
+                        <div class="book__content">
+                            <p>Mi nombre es <strong>Laura Cortés</strong>, tengo 25 años y vivo en la ciudad de Cali. Soy estudiante de Diseño Gráfico y Arquitectura. Me apasionan el arte y el diseño, pero, sobre todo, disfruto aprender y desafiarme cada día para ser mejor.</p>
+                        </div>
                     </div>
-                </a>
-                <a href="#arquitectura" class="discipline reveal-up" style="--d:.15s">
-                    <div class="discipline__bg discipline__bg--arch"></div>
-                    <div class="discipline__inner">
-                        <span class="discipline__num">02</span>
-                        <h3 class="discipline__title">Arquitectura</h3>
-                        <p class="discipline__tags">Maquetación · Vivienda · Espacio público</p>
-                        <span class="discipline__arrow" aria-hidden="true">→</span>
+                    <div class="book__face book__face--back">
+                        <div class="book__content book__content--center">
+                            <h3>MIS HABILIDADES<br>TÉCNICAS</h3>
+                        </div>
                     </div>
-                </a>
+                </div>
+
+                <div class="book__page book__page--3">
+                    <div class="book__face book__face--front">
+                        <div class="book__content">
+                            <ul class="skills skills--book">
+                                <li class="skill"><img src="img/iconos/illustreitor.png" alt="Illustrator" /></li>
+                                <li class="skill"><img src="img/iconos/3dsmax.png" alt="3ds Max" /></li>
+                                <li class="skill"><img src="img/iconos/photoshop.png" alt="Photoshop" /></li>
+                                <li class="skill"><img src="img/iconos/indesing.png" alt="InDesign" /></li>
+                                <li class="skill"><img src="img/iconos/adove xd.png" alt="Adobe XD" /></li>
+                                <li class="skill"><img src="img/iconos/filmora14.png" alt="Filmora" /></li>
+                                <li class="skill"><img src="img/iconos/figma%20..png" alt="Figma" /></li>
+                                <li class="skill"><img src="img/iconos/revit.png" alt="Revit" /></li>
+                                <li class="skill"><img src="img/iconos/autocad.png" alt="AutoCAD" /></li>
+                                <li class="skill"><img src="img/iconos/rhino.png" alt="Rhino" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="book__face book__face--back">
+                        <div class="book__content">
+                            <h3>MI EXPERIENCIA</h3>
+                            <p>Diseñadora en formación entre el gráfico y la arquitectura, convierto ideas en identidades con propósito. He trabajado como freelancer creando branding para marcas independientes y también he dado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book__page book__page--4">
+                    <div class="book__face">
+                        <div class="book__content">
+                            <p>vida a mi propio emprendimiento, desarrollando su universo visual y gestionando sus redes.</p>
+                            <p>Me interesa explorar la creatividad como herramienta de solución, fortaleciendo mis procesos con formación en gestión del tiempo y pensamiento creativo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <label class="book__nav book__nav--next book__nav--to-2" for="book-spread-2" aria-label="Página siguiente">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l9-7-9-7z"/></svg>
+                </label>
+                <label class="book__nav book__nav--next book__nav--to-3" for="book-spread-3" aria-label="Página siguiente">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l9-7-9-7z"/></svg>
+                </label>
+                <label class="book__nav book__nav--prev book__nav--to-1" for="book-spread-1" aria-label="Página anterior">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M16 5 7 12l9 7V5z"/></svg>
+                </label>
+                <label class="book__nav book__nav--prev book__nav--to-2-prev" for="book-spread-2" aria-label="Página anterior">
+                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M16 5 7 12l9 7V5z"/></svg>
+                </label>
             </div>
         </div>
     </section>
 
-    <!-- DISEÑO GRÁFICO -->
-    <section class="design section" id="diseno">
-        <div class="container">
-            <header class="section__header">
-                <span class="section__kicker">Diseño Gráfico</span>
-                <h2 class="section__title section__title--xl">PROYECTOS</h2>
-            </header>
-
-            <!-- Ilustración -->
-            <div class="subsection reveal-up" id="ilustracion">
-                <h3 class="subsection__title">— Ilustración —</h3>
-                <div class="gallery-grid">
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/illustracion/line%20art%20personajes.png" alt="Line art de personajes" loading="lazy" />
-                        <figcaption>Line Art · Personajes</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/illustracion/illustracion%20ni%C3%B1a%20rubia%20palitos%20rosados_Mesa%20de%20trabajo%201.png" alt="Ilustración niña rubia con palitos rosados" loading="lazy" />
-                        <figcaption>Niña rubia · Ilustración digital</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/illustracion/MAMI%20ILLUSTRACION%202.1-01-01.jpg" alt="Ilustración Mami" loading="lazy" />
-                        <figcaption>Mami · Ilustración editorial</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/illustracion/captura%20.png" alt="Ilustración" loading="lazy" />
-                        <figcaption>Estudio de ilustración</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/illustracion/rutina.png" alt="Ilustración rutina" loading="lazy" />
-                        <figcaption>Rutina · Ilustración infantil</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/illustracion/fondo%20final%20color.png" alt="Fondo ilustrado" loading="lazy" />
-                        <figcaption>Fondo · Ilustración escenográfica</figcaption>
-                    </figure>
-                </div>
-            </div>
-
-            <!-- Libro: EN BUSCA DE LOS SABORES -->
-            <div class="subsection reveal-up" id="libro">
-                <h3 class="subsection__title">— Libro · En busca de los sabores —</h3>
-                <p class="subsection__lead">Libro infantil ilustrado: una aventura gráfica que combina el universo de los sabores y los aromas con personajes coloridos. La narrativa invita a los niños a <em>aprender e imaginar</em> a través de un viaje de descubrimiento.</p>
-                <div class="gallery-grid">
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/libro/libro%201.png" alt="Libro - portada" loading="lazy" />
-                        <figcaption>Portada</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/libro/libro%202.png" alt="Libro - páginas interiores" loading="lazy" />
-                        <figcaption>Páginas interiores</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/libro/libro%203.png" alt="Libro - mockup" loading="lazy" />
-                        <figcaption>Mockup</figcaption>
-                    </figure>
-                </div>
-            </div>
-
-            <!-- Café: AROMA NATURAL -->
-            <div class="subsection reveal-up" id="cafe">
-                <h3 class="subsection__title">— Café · Aroma Natural —</h3>
-                <p class="subsection__lead">Branding para una marca de café orgánico colombiano. Una identidad cálida y silvestre, con ilustraciones de fauna nativa, que evoca <em>origen, autenticidad y naturaleza</em>.</p>
-                <div class="gallery-grid">
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/cafe/cafe%201.png" alt="Aroma Natural - identidad" loading="lazy" />
-                        <figcaption>Identidad</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/cafe/cafe%202.png" alt="Aroma Natural - empaque" loading="lazy" />
-                        <figcaption>Empaque</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/cafe/cafe%203.png" alt="Aroma Natural - aplicaciones" loading="lazy" />
-                        <figcaption>Aplicaciones</figcaption>
-                    </figure>
-                </div>
-            </div>
-
-            <!-- Cocona: COCONA KARÚ -->
-            <div class="subsection reveal-up" id="cocona">
-                <h3 class="subsection__title">— Cocona · Cocona Karú —</h3>
-                <p class="subsection__lead">Identidad visual para un emprendimiento de bebidas naturales. Una propuesta vibrante, inspirada en frutas tropicales, que conecta con un público <em>joven y consciente</em>.</p>
-                <div class="gallery-grid">
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/cocona/cocona%201.png" alt="Cocona Karú - logo" loading="lazy" />
-                        <figcaption>Logo</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/cocona/cocona%202.png" alt="Cocona Karú - empaque" loading="lazy" />
-                        <figcaption>Empaque</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/dise%C3%B1o%20grafico/cocona/cocona%204.png" alt="Cocona Karú - aplicaciones" loading="lazy" />
-                        <figcaption>Aplicaciones</figcaption>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ARQUITECTURA -->
-    <section class="arch section" id="arquitectura">
-        <div class="container">
-            <header class="section__header">
-                <span class="section__kicker">Arquitectura</span>
-                <h2 class="section__title section__title--xl">PROYECTOS</h2>
-                <p class="section__lead">Maquetación, vivienda y proyectos de espacio. Cuatro ejercicios que exploran cómo construir desde el lugar.</p>
-            </header>
-
-            <!-- Maquetas -->
-            <div class="subsection reveal-up" id="maquetas">
-                <h3 class="subsection__title">— Maquetas —</h3>
-                <p class="subsection__lead">Modelos físicos a escala donde se exploran volúmenes, materialidad y relación con el sitio.</p>
-                <div class="gallery-grid">
-                    <figure class="thumb">
-                        <img src="img/arqui/maquetas/edificio.png" alt="Maqueta - edificio" loading="lazy" />
-                        <figcaption>Edificio · Maqueta volumétrica</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/arqui/maquetas/maqueta%20casa%20sol-01.png" alt="Maqueta Casa Sol" loading="lazy" />
-                        <figcaption>Casa Sol · Maqueta</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/arqui/maquetas/refujio-01.jpg" alt="Maqueta Refugio - vista 1" loading="lazy" />
-                        <figcaption>Refugio · Vista 1</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/arqui/maquetas/refujio%202.png" alt="Maqueta Refugio - vista 2" loading="lazy" />
-                        <figcaption>Refugio · Vista 2</figcaption>
-                    </figure>
-                </div>
-            </div>
-
-            <!-- Ciénaga Viva -->
-            <div class="subsection reveal-up" id="cienaga-viva">
-                <h3 class="subsection__title">— Ciénaga Viva —</h3>
-                <p class="subsection__lead">Centro ambiental que dialoga con el ecosistema de humedales. Una arquitectura ligera, en madera, integrada al paisaje para fomentar la <em>conservación y la educación ambiental</em>.</p>
-                <div class="gallery-grid">
-                    <figure class="thumb">
-                        <img src="img/arqui/proyecto%201/cienaga-01-01.jpg" alt="Ciénaga Viva — Vista 1" loading="lazy" />
-                        <figcaption>Acceso principal</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/arqui/proyecto%201/cienaga-02-01-01.jpg" alt="Ciénaga Viva — Vista 2" loading="lazy" />
-                        <figcaption>Vista del humedal</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/arqui/proyecto%201/cienaga-03-01.jpg" alt="Ciénaga Viva — Vista 3" loading="lazy" />
-                        <figcaption>Pasarelas en madera</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/arqui/proyecto%201/cienaga-04-01.jpg" alt="Ciénaga Viva — Vista 4" loading="lazy" />
-                        <figcaption>Conjunto integrado</figcaption>
-                    </figure>
-                </div>
-            </div>
-
-            <!-- Casa Sol -->
-            <div class="subsection reveal-up" id="casa-sol">
-                <h3 class="subsection__title">— Casa Sol —</h3>
-                <p class="subsection__lead">Vivienda unifamiliar en San Antonio. Patios interiores, ventilación cruzada y un lenguaje arquitectónico contemporáneo en <em>clave tropical</em>.</p>
-                <div class="gallery-grid">
-                    <figure class="thumb">
-                        <img src="img/arqui/proyecto%202/entrega%20final%20casa%20san%20antonio%202025-01.jpg" alt="Casa Sol - Vista 1" loading="lazy" />
-                        <figcaption>Fachada principal</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/arqui/proyecto%202/entrega%20final%20casa%20san%20antonio%202025-02.jpg" alt="Casa Sol - Vista 2" loading="lazy" />
-                        <figcaption>Vista posterior</figcaption>
-                    </figure>
-                    <figure class="thumb">
-                        <img src="img/arqui/proyecto%202/proyecto%202.png" alt="Casa Sol - Conjunto" loading="lazy" />
-                        <figcaption>Conjunto del proyecto</figcaption>
-                    </figure>
-                </div>
-            </div>
-
-            <!-- Refugio La Orilla -->
-            <div class="subsection reveal-up" id="refugio">
-                <h3 class="subsection__title">— Refugio La Orilla —</h3>
-                <p class="subsection__lead">Refugio inserto en un humedal: arquitectura blanca y limpia que se contrapone al verde del paisaje. Espacios abiertos al agua, <em>vida tranquila y conexión con la naturaleza</em>.</p>
-                <div class="gallery-grid">
-                    <figure class="thumb">
-                        <img src="img/arqui/proyecto%203/proyecto%203.png" alt="Refugio La Orilla" loading="lazy" />
-                        <figcaption>Refugio · Vista exterior</figcaption>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCESOS -->
-    <section class="process section" id="procesos">
-        <div class="container">
-            <header class="section__header section__header--center">
-                <span class="section__kicker">Mi método</span>
-                <h2 class="section__title section__title--xl">Mis Procesos</h2>
-                <p class="section__lead">Cada proyecto sigue un viaje. Esto es lo que pasa entre la primera idea y el resultado final.</p>
-            </header>
-
-            <ol class="process__steps">
-                <li class="process__step reveal-up">
-                    <span class="process__num">01</span>
-                    <h3>Investigar</h3>
-                    <p>Escucho al cliente, estudio el contexto y exploro referentes para entender el problema antes de proponer una solución.</p>
-                </li>
-                <li class="process__step reveal-up" style="--d:.1s">
-                    <span class="process__num">02</span>
-                    <h3>Conceptualizar</h3>
-                    <p>Defino la idea central. Bocetos, palabras y referentes hasta encontrar un concepto con personalidad propia.</p>
-                </li>
-                <li class="process__step reveal-up" style="--d:.2s">
-                    <span class="process__num">03</span>
-                    <h3>Diseñar</h3>
-                    <p>Llevo la idea al pixel y al papel: tipografía, color, composición, modelos 3D y maquetas. Iteración constante.</p>
-                </li>
-                <li class="process__step reveal-up" style="--d:.3s">
-                    <span class="process__num">04</span>
-                    <h3>Entregar</h3>
-                    <p>Refino los detalles, preparo entregables y cuido la implementación final para que la idea conserve su esencia.</p>
-                </li>
-            </ol>
-        </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section class="contact section" id="contacto">
-        <div class="container">
-            <header class="section__header section__header--center">
-                <span class="section__kicker">Hablemos</span>
-                <h2 class="section__title section__title--xl">Contacto</h2>
-                <p class="section__lead">¿Tienes un proyecto en mente? Escríbeme y construimos algo increíble.</p>
-            </header>
-
-            <div class="contact__grid">
-                <aside class="contact__info reveal-up">
-                    <div class="contact__item">
-                        <span class="contact__label">Email</span>
-                        <a href="mailto:lauraalejandracortesortegate@gmail.com">lauraalejandracortesortegate@gmail.com</a>
-                    </div>
-                    <a class="contact__item contact__item--link contact__item--wa" href="https://wa.me/573012734251?text=%C2%A1Hola%20Laura!%20Vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20hablarte%20de%20un%20proyecto." target="_blank" rel="noopener">
-                        <span class="contact__label">WhatsApp</span>
-                        <span class="contact__value">
-                            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M19.05 4.91A10 10 0 0 0 12 2a10 10 0 0 0-8.5 15.18L2 22l4.93-1.46A10 10 0 0 0 12 22a10 10 0 0 0 7.07-17.09ZM12 20.25a8.27 8.27 0 0 1-4.21-1.15l-.3-.18-2.93.86.88-2.85-.2-.3a8.27 8.27 0 1 1 6.76 3.62Zm4.55-6.18-.55-.27c-.74-.37-1.47-.74-1.69-.81-.22-.06-.39-.09-.55.1-.16.18-.6.74-.74.9-.13.16-.27.18-.51.06-.74-.37-1.39-.7-1.99-1.27-.5-.46-.84-1.03-1.13-1.6-.2-.39-.04-.6.12-.77.16-.16.37-.42.55-.63.06-.07.11-.18.16-.27.05-.09.04-.18 0-.27-.04-.09-.55-1.32-.76-1.81-.17-.4-.35-.34-.51-.34l-.43-.01a.83.83 0 0 0-.6.27c-.21.21-.78.76-.78 1.86s.8 2.16.91 2.31c.11.16 1.59 2.43 3.86 3.41 1.85.71 2.22.59 2.62.55.4-.04 1.27-.52 1.45-1.02.18-.5.18-.93.13-1.02-.05-.09-.18-.13-.39-.22Z"/></svg>
-                            +57 301 273 4251 →
-                        </span>
-                    </a>
-                    <div class="contact__item">
-                        <span class="contact__label">Teléfono</span>
-                        <a href="tel:+573012734251">+57 301 273 4251</a>
-                    </div>
-                    <div class="contact__item">
-                        <span class="contact__label">Behance</span>
-                        <a href="https://www.behance.net/alejap321489c" target="_blank" rel="noopener">behance.net/alejap321489c</a>
-                    </div>
-                    <div class="contact__item">
-                        <span class="contact__label">Ubicación</span>
-                        <span class="contact__value">Cali, Colombia 🇨🇴</span>
-                    </div>
-                </aside>
-
-                <form class="contact__form reveal-up"
-                      id="contact-form"
-                      method="POST"
-                      action="https://formsubmit.co/ajax/lauraalejandracortesortegate@gmail.com"
-                      style="--d:.1s">
-                    <!-- formsubmit.co configuration -->
-                    <input type="hidden" name="_subject" value="Nuevo mensaje desde tu portafolio ✦">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-
-                    <div class="field">
-                        <label for="name">Nombre</label>
-                        <input type="text" id="name" name="name" placeholder="Tu nombre" required>
-                    </div>
-                    <div class="field">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
-                    </div>
-                    <div class="field">
-                        <label for="phone">Teléfono</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+57 ...">
-                    </div>
-                    <div class="field">
-                        <label for="message">Mensaje</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Cuéntame de tu proyecto..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn--primary btn--full" id="contact-submit">
-                        <span class="btn__label">Enviar mensaje →</span>
-                        <span class="btn__loader" aria-hidden="true"></span>
-                    </button>
-                    <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-                    <p class="form-fallback">¿Prefieres otro canal?
-                        <a href="https://wa.me/573012734251?text=%C2%A1Hola%20Laura!" target="_blank" rel="noopener">WhatsApp</a>
-                        ·
-                        <a href="mailto:lauraalejandracortesortegate@gmail.com">Email</a>
-                    </p>
-                </form>
-            </div>
-        </div>
-    </section>
-
+    <!-- PIE DE PÁGINA -->
     <footer class="footer">
         <div class="container footer__row">
             <p>© <span id="year"></span> <strong>Laura Cortés</strong> · Diseño Gráfico & Arquitectura · Cali, Colombia</p>
-            <a href="#home" class="footer__top">Volver arriba ↑</a>
+            <a href="index.html" class="footer__top">Inicio ↑</a>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp button -->
+    <!-- Botón flotante de WhatsApp en la esquina inferior -->
     <a class="wa-fab"
        href="https://wa.me/573012734251?text=%C2%A1Hola%20Laura!%20Vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto."
        target="_blank" rel="noopener"
@@ -662,6 +223,7 @@
         <span class="wa-fab__tooltip">Escríbeme por WhatsApp</span>
     </a>
 
+    <!-- Script con interacciones: menú, año, animaciones de aparición -->
     <script src="js/script.js"></script>
 </body>
 </html>
