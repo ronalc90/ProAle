@@ -1032,6 +1032,25 @@ section[id] { scroll-margin-top: var(--header-h); }
     .book__nav--prev { left: -10px; }
 }
 
+/* Móvil: el texto no cabe en 440px de alto; las páginas pasan a una rejilla
+   (en vez de position:absolute) para que el libro crezca con su contenido */
+@media (max-width: 600px) {
+    .book { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 64px; }
+    .book__page { position: relative; grid-area: 1 / 2; width: auto; height: auto; display: grid; }
+    .book__page--1 { grid-column: 1; }
+    .book__face { position: relative; inset: auto; grid-area: 1 / 1; }
+    /* Más margen del lado del lomo para no chocar con la espiral */
+    .book__content { padding: 22px 12px 22px 24px; }
+    .book__page--1 .book__content,
+    .book__face--back .book__content { padding: 22px 24px 22px 12px; }
+    .book__content h3 { font-size: clamp(.7rem, 3.5vw, 1.2rem); }
+    .book__content p { font-size: .82rem; text-align: left; }
+    /* Flechas debajo del libro para que no tapen el texto */
+    .book__nav { top: calc(100% + 32px); }
+    .book__nav--next { right: 0; }
+    .book__nav--prev { left: 0; }
+}
+
 /* ---------- CONTACTO (pill bar) ---------- */
 .contact-bar.section {
     padding: 30px 0 60px;
@@ -1097,11 +1116,13 @@ section[id] { scroll-margin-top: var(--header-h); }
 @media (max-width: 720px) {
     .contact-pill {
         flex-direction: column;
+        grid-template-columns: 1fr;
         gap: 18px;
         padding: 24px 28px;
         border-radius: var(--radius-lg);
     }
     .contact-pill__list { width: 100%; align-items: center; text-align: center; }
+    .contact-pill__list span { min-width: 0; overflow-wrap: anywhere; }
 }
 
 .about-img {
@@ -1693,6 +1714,13 @@ section[id] { scroll-margin-top: var(--header-h); }
         letter-spacing: 2px;
         white-space: nowrap;
     }
+}
+/* Pantallas muy angostas: el título (nowrap) no cabía y causaba scroll horizontal */
+@media (max-width: 420px) {
+    .category-pill { padding: 10px 14px; gap: 8px; }
+    .category-pill__avatar,
+    .category-pill::after { width: 48px; height: 48px; }
+    .category-pill__title { letter-spacing: 1px; }
 }
 
 /* =============================================
