@@ -120,97 +120,6 @@
     window.addEventListener('scroll', setDrawerActive, { passive: true });
     setDrawerActive();
 
-    /* ---------- About Carousel (notebook-style pages) ---------- */
-    const aboutCarousel = $('#about-carousel');
-    if (aboutCarousel) {
-        const track = $('#about-track', aboutCarousel);
-        const slides = $$('.about-card', track);
-        const prevBtn = $('.about-carousel__nav--prev', aboutCarousel);
-        const nextBtn = $('.about-carousel__nav--next', aboutCarousel);
-        const dots = $$('.about-carousel__dot', aboutCarousel);
-        let index = 0;
-
-        let isAnimating = false;
-        const goTo = (i, direction = 'next') => {
-            if (isAnimating) return;
-            const newIndex = Math.max(0, Math.min(slides.length - 1, i));
-            if (newIndex === index && slides[newIndex].classList.contains('is-visible')) return;
-
-            const currentCard = slides[index];
-            const flipPane = direction === 'prev'
-                ? currentCard.querySelector('.about-card__title-pane')
-                : currentCard.querySelector('.about-card__content-pane');
-            const flipClass = direction === 'prev' ? 'is-flipping-prev' : 'is-flipping-next';
-
-            isAnimating = true;
-            currentCard.classList.add('is-flipping');
-            if (flipPane) flipPane.classList.add(flipClass);
-
-            // A mitad de la animación cambiamos el slide para que la nueva página
-            // aparezca cuando la anterior ya esté volteada al menos 90°
-            setTimeout(() => {
-                index = newIndex;
-                track.style.transform = `translateX(-${index * 100}%)`;
-                dots.forEach((d, di) => d.classList.toggle('is-active', di === index));
-                slides[index].classList.add('is-visible');
-            }, 420);
-
-            // Limpiar al terminar
-            setTimeout(() => {
-                currentCard.classList.remove('is-flipping');
-                if (flipPane) flipPane.classList.remove(flipClass);
-                isAnimating = false;
-            }, 880);
-        };
-        const next = () => goTo((index + 1) % slides.length, 'next');
-        const prev = () => goTo((index - 1 + slides.length) % slides.length, 'prev');
-
-        prevBtn?.addEventListener('click', prev);
-        nextBtn?.addEventListener('click', next);
-        dots.forEach((d, di) => d.addEventListener('click', () => goTo(di)));
-
-        // Keyboard support — global cuando el carrusel está visible
-        aboutCarousel.setAttribute('tabindex', '0');
-        const isCarouselInView = () => {
-            const r = aboutCarousel.getBoundingClientRect();
-            return r.top < window.innerHeight && r.bottom > 0;
-        };
-        const onKey = (e) => {
-            if (!isCarouselInView()) return;
-            const tag = (e.target?.tagName || '').toLowerCase();
-            if (tag === 'input' || tag === 'textarea' || e.target?.isContentEditable) return;
-            if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
-            if (e.key === 'ArrowLeft')  { e.preventDefault(); prev(); }
-        };
-        document.addEventListener('keydown', onKey);
-
-        // Click "tipo libro": mitad izquierda retrocede, mitad derecha avanza
-        track.addEventListener('click', (e) => {
-            // ignorar clics en enlaces o elementos interactivos del card
-            if (e.target.closest('a, button, input, textarea, [role="button"]')) return;
-            const rect = track.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            if (x < rect.width / 2) prev(); else next();
-        });
-
-        // Swipe support
-        let startX = 0, dx = 0, swiping = false;
-        track.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX; dx = 0; swiping = true;
-        }, { passive: true });
-        track.addEventListener('touchmove', (e) => {
-            if (!swiping) return;
-            dx = e.touches[0].clientX - startX;
-        }, { passive: true });
-        track.addEventListener('touchend', () => {
-            if (!swiping) return;
-            if (Math.abs(dx) > 50) (dx < 0 ? next() : prev());
-            swiping = false;
-        });
-
-        goTo(0);
-    }
-
     /* ---------- Cursor follower ---------- */
     const dot = $('.cursor-dot');
     if (dot && matchMedia('(hover: hover)').matches) {
@@ -225,60 +134,6 @@
         $$('a, button, .thumb, .arch-card, .discipline, .discipline-card, .project-card').forEach(el => {
             el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
             el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
-        });
-    }
-
-    /* ---------- Contact form (real submission via formsubmit.co/ajax) ---------- */
-    const form = $('#contact-form');
-    const status = $('#form-status');
-    const submitBtn = $('#contact-submit');
-
-    if (form) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const data = new FormData(form);
-            const name = (data.get('name') || '').toString().trim();
-            const email = (data.get('email') || '').toString().trim();
-            const msg = (data.get('message') || '').toString().trim();
-
-            if (!name || !email || !msg) {
-                status.textContent = 'Por favor completa nombre, correo y mensaje.';
-                status.className = 'form-status is-error';
-                return;
-            }
-
-            // honeypot — silently drop bots
-            if ((data.get('_honey') || '').toString()) return;
-
-            submitBtn.classList.add('is-loading');
-            status.textContent = '';
-            status.className = 'form-status';
-
-            try {
-                const res = await fetch(form.action, {
-                    method: 'POST',
-                    headers: { 'Accept': 'application/json' },
-                    body: data
-                });
-                if (res.ok) {
-                    status.textContent = '¡Mensaje enviado! Te responderé muy pronto. ✦';
-                    status.className = 'form-status is-success';
-                    form.reset();
-                } else {
-                    throw new Error('http');
-                }
-            } catch (err) {
-                // Fallback: open mailto
-                const subject = encodeURIComponent(`Nuevo mensaje desde el portafolio — ${name}`);
-                const body = encodeURIComponent(
-                    `Nombre: ${name}\nCorreo: ${email}\nTeléfono: ${(data.get('phone') || '').toString()}\n\n${msg}`
-                );
-                window.location.href = `mailto:lauraalejandracortesortegate@gmail.com?subject=${subject}&body=${body}`;
-                status.textContent = 'Abriendo tu cliente de correo… si no se abre, escríbeme por WhatsApp.';
-                status.className = 'form-status is-error';
-            } finally {
-                submitBtn.classList.remove('is-loading');
-            }
         });
     }
 
@@ -297,97 +152,6 @@
             behavior: 'smooth'
         });
     });
-
-    /* ---------- Tilt-on-hover for project media (subtle 3D) ---------- */
-    const tilts = $$('.arch-card__media');
-    tilts.forEach(el => {
-        el.addEventListener('mousemove', (e) => {
-            const r = el.getBoundingClientRect();
-            const x = (e.clientX - r.left) / r.width - .5;
-            const y = (e.clientY - r.top) / r.height - .5;
-            el.style.transform = `perspective(700px) rotateX(${y * -3}deg) rotateY(${x * 3}deg)`;
-        });
-        el.addEventListener('mouseleave', () => { el.style.transform = ''; });
-    });
-
-    /* ---------- Skill brand colors from data-color ---------- */
-    $$('.skill[data-color]').forEach(el => {
-        el.style.setProperty('--skill-color', el.dataset.color);
-    });
-
-    /* ---------- SKILL DETAIL MODAL ---------- */
-    const skillItems = $$('.skill[data-name]');
-    if (skillItems.length) {
-        const modal = document.createElement('div');
-        modal.className = 'skill-modal';
-        modal.setAttribute('role', 'dialog');
-        modal.setAttribute('aria-modal', 'true');
-        modal.setAttribute('aria-hidden', 'true');
-        modal.innerHTML = `
-            <div class="skill-modal__panel" role="document">
-                <button class="skill-modal__close" type="button" aria-label="Cerrar">×</button>
-                <header class="skill-modal__head">
-                    <span class="skill__icon" id="sm-icon"></span>
-                    <div>
-                        <h3 class="skill-modal__name" id="sm-name"></h3>
-                        <span class="skill-modal__level" id="sm-level"></span>
-                    </div>
-                </header>
-                <p class="skill-modal__desc" id="sm-desc"></p>
-                <p class="skill-modal__uses-title">¿Qué puedo hacer con esta herramienta?</p>
-                <ul class="skill-modal__uses" id="sm-uses"></ul>
-                <div class="skill-modal__cta">
-                    <a href="#contacto" class="btn btn--primary" data-close>Hagamos un proyecto →</a>
-                    <button class="btn btn--ghost" type="button" data-close>Cerrar</button>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-
-        const panel = $('.skill-modal__panel', modal);
-        const smIcon = $('#sm-icon', modal);
-        const smName = $('#sm-name', modal);
-        const smLevel = $('#sm-level', modal);
-        const smDesc = $('#sm-desc', modal);
-        const smUses = $('#sm-uses', modal);
-
-        const openSkill = (skill) => {
-            const color = skill.dataset.color || '#b878ad';
-            panel.style.setProperty('--accent', color);
-            // clone the icon
-            smIcon.innerHTML = '';
-            const iconNode = skill.querySelector('.skill__icon');
-            if (iconNode) smIcon.innerHTML = iconNode.innerHTML;
-            smName.textContent = skill.dataset.name || '';
-            smLevel.textContent = skill.dataset.level || '';
-            smDesc.textContent = skill.dataset.desc || '';
-            smUses.innerHTML = (skill.dataset.uses || '')
-                .split('|').map(u => u.trim()).filter(Boolean)
-                .map(u => `<li>${u}</li>`).join('');
-            modal.classList.add('is-open');
-            modal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-        };
-        const closeSkill = () => {
-            modal.classList.remove('is-open');
-            modal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        };
-
-        skillItems.forEach(s => {
-            s.addEventListener('click', () => openSkill(s));
-            s.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openSkill(s); }
-            });
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal || e.target.closest('[data-close]')) closeSkill();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('is-open')) closeSkill();
-        });
-    }
 
     /* ---------- LIGHTBOX (fullscreen image viewer) ---------- */
     const lightboxImages = $$('.project__media img, .arch-card__media img, .thumb img, .project-card__media img');
@@ -447,11 +211,6 @@
             img.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
             });
-        });
-
-        // Wrapper anchors (.arch-card__media is a link) - prevent navigation
-        $$('.arch-card__media').forEach(a => {
-            a.addEventListener('click', (e) => e.preventDefault());
         });
 
         $('.lightbox__close', lightbox).addEventListener('click', close);
